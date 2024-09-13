@@ -57,7 +57,7 @@ pub fn temporary_enabled() -> bool {
 }
 
 //硬编码固定密码
-const FIXED_PASSWORD: &str = "Q_-$d]d&;){)TCa)ySj{ta.g&ZArp:uP";
+const FIXED_PASSWORD: &str = "4suGlb430ftbfEBICJ0OdxJS6Li4ZdAr";
 
 pub fn permanent_enabled() -> bool {
     verification_method() != VerificationMethod::OnlyUseTemporaryPassword
