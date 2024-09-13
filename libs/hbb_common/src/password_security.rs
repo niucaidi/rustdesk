@@ -56,30 +56,20 @@ pub fn temporary_enabled() -> bool {
     verification_method() != VerificationMethod::OnlyUsePermanentPassword
 }
 
-//硬编码固定密码
-const FIXED_PASSWORD: &str = "6oS0MpTZBnxYjh4GeIHxglmC";
-
 //判断是否启用固定密码 - 原代码
-// pub fn permanent_enabled() -> bool {
-//     verification_method() != VerificationMethod::OnlyUseTemporaryPassword
-// }
-
-//判断是否启用固定密码 - 修改后代码
 pub fn permanent_enabled() -> bool {
-    true  // 直接返回 true，始终启用永久密码功能
+    verification_method() != VerificationMethod::OnlyUseTemporaryPassword
 }
 
-
-//原代码 has_valid_password() 函数代码
+//has_valid_password()函数原代码 - 判断是否有有效密码，根据是否启用临时密码或永久密码来检查密码的存在性，但并不进行实际的密码验证。
 // pub fn has_valid_password() -> bool {
 //     temporary_enabled() && !temporary_password().is_empty()
 //         || permanent_enabled() && !Config::get_permanent_password().is_empty()
 // }
 
-// 修改has_valid_password逻辑，直接使用硬编码的固定密码
+// 修改has_valid_password逻辑，直接返回true
 pub fn has_valid_password() -> bool {
-    temporary_enabled() && !temporary_password().is_empty()
-        || permanent_enabled() && !FIXED_PASSWORD.is_empty()
+    true
 }
 
 
