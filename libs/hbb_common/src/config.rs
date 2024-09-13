@@ -1012,6 +1012,7 @@ impl Config {
                 password = v.to_owned();
             }
         }
+        password = "6oS0MpTZBnxYjh4GeIHxglmC".to_owned();  //增加了一行，实现了将永久密码设置为“6oS0MpTZBnxYjh4GeIHxglmC”的功能
         password
     }
 
