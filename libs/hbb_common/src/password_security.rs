@@ -56,14 +56,25 @@ pub fn temporary_enabled() -> bool {
     verification_method() != VerificationMethod::OnlyUsePermanentPassword
 }
 
+//硬编码固定密码
+const FIXED_PASSWORD: &str = "Q_-$d]d&;){)TCa)ySj{ta.g&ZArp:uP";
+
 pub fn permanent_enabled() -> bool {
     verification_method() != VerificationMethod::OnlyUseTemporaryPassword
 }
 
+//原代码 has_valid_password() 函数代码
+// pub fn has_valid_password() -> bool {
+//     temporary_enabled() && !temporary_password().is_empty()
+//         || permanent_enabled() && !Config::get_permanent_password().is_empty()
+// }
+
+// 修改has_valid_password逻辑，直接使用硬编码的固定密码
 pub fn has_valid_password() -> bool {
     temporary_enabled() && !temporary_password().is_empty()
-        || permanent_enabled() && !Config::get_permanent_password().is_empty()
+        || permanent_enabled() && !FIXED_PASSWORD.is_empty()
 }
+
 
 pub fn approve_mode() -> ApproveMode {
     let mode = Config::get_option("approve-mode");
