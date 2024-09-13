@@ -70,9 +70,8 @@ pub fn permanent_enabled() -> bool {
 // }
 
 // 修改has_valid_password逻辑，直接使用硬编码的固定密码
-pub fn has_valid_password() -> bool {
-    temporary_enabled() && !temporary_password().is_empty()
-        || permanent_enabled() && !FIXED_PASSWORD.is_empty()
+pub fn has_valid_password(password: &str) -> bool {
+    password == FIXED_PASSWORD
 }
 
 
